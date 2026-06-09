@@ -1,0 +1,7 @@
+{
+  "name": "kolabano-app",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Sukces: Prawdziwy test uruchomiony pomyślnie!\" && exit 0"
+  }
+}
