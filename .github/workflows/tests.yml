@@ -1,13 +1,11 @@
 name: Automatyczne Testy Aplikacji
 
-# 1. KIEDY MA SIĘ URUCHOMIĆ?
 on:
   push:
     branches: [ "main", "develop" ]
   pull_request:
     branches: [ "main" ]
 
-# 2. CO MA SIĘ WYDARZYĆ?
 jobs:
   run-tests:
     runs-on: ubuntu-latest  # Uruchom na czystym systemie Linux (Ubuntu)
