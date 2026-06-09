@@ -13,20 +13,20 @@ jobs:
     runs-on: ubuntu-latest  # Uruchom na czystym systemie Linux (Ubuntu)
 
     steps:
-    # Krok a: Pobierz kod z naszego repozytorium na ten wirtualny komputer
+    # Krok a: Pobierz kod z naszego repozytorium
     - name: Pobieranie kodu źródłowego
       uses: actions/checkout@v4
 
-    # Krok b: Zainstaluj środowisko uruchomieniowe (np. Node.js)
+    # Krok b: Zainstaluj środowisko Node.js
     - name: Konfiguracja środowiska Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20' # wersja Node.js
+        node-version: '20'
 
-    # Krok c: Zainstaluj wszystkie biblioteki (serwer, zależności)
-    - name: Instalacja bibliotek i pakietów
-      run: npm ci
+    # Krok c: Zmieniona komenda, która nie wyrzuci błędu o brak lockfile
+    - name: Instalacja bibliotek
+      run: npm install
 
-    # Krok d: Uruchomienie testów automatycznych
+    # Krok d: Uruchomienie testu z package.json
     - name: Uruchomienie testów automatycznych
-      run: echo "Wszystkie testy przeszly pomyslnie!"
+      run: npm test
