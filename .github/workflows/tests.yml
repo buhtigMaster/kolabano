@@ -1,0 +1,32 @@
+name: Automatyczne Testy Aplikacji
+
+# 1. KIEDY MA SIĘ URUCHOMIĆ?
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
+
+# 2. CO MA SIĘ WYDARZYĆ?
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest  # Uruchom na czystym systemie Linux (Ubuntu)
+
+    steps:
+    # Krok a: Pobierz kod z naszego repozytorium na ten wirtualny komputer
+    - name: Pobieranie kodu źródłowego
+      uses: actions/checkout@v4
+
+    # Krok b: Zainstaluj środowisko uruchomieniowe (np. Node.js)
+    - name: Konfiguracja środowiska Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20' # wersja Node.js
+
+    # Krok c: Zainstaluj wszystkie biblioteki (serwer, zależności)
+    - name: Instalacja bibliotek i pakietów
+      run: npm ci
+
+    # Krok d: Uruchom komendę testującą
+    - name: Uruchomienie testów automatycznych
+      run: npm test
