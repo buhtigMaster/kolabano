@@ -8,23 +8,22 @@ on:
 
 jobs:
   run-tests:
-    runs-on: ubuntu-latest  # Uruchom na czystym systemie Linux (Ubuntu)
+    runs-on: ubuntu-latest  
 
     steps:
-    # Krok a: Pobierz kod z naszego repozytorium
     - name: Pobieranie kodu źródłowego
       uses: actions/checkout@v4
 
-    # Krok b: Zainstaluj środowisko Node.js
+
     - name: Konfiguracja środowiska Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
 
-    # Krok c: Zmieniona komenda, która nie wyrzuci błędu o brak lockfile
+
+
     - name: Instalacja bibliotek
       run: npm install
 
-    # Krok d: Uruchomienie testu z package.json
     - name: Uruchomienie testów automatycznych
       run: npm test
